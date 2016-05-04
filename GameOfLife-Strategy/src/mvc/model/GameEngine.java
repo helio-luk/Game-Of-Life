@@ -111,6 +111,17 @@ public class GameEngine {
 		}
 	}
 	
+	public void makeCellDead(int i, int j) throws InvalidParameterException{
+		
+		if(validPosition(i, j)){
+			cells[i][j].kill();
+			statistics.recordKill();			
+		}else{
+			new InvalidParameterException("Invalid position (" + i + ", " + j + ")" );
+		}
+		
+	}
+	
 	/**
 	 * Verifica se uma celula na posicao (i, j) estah viva.
 	 * 

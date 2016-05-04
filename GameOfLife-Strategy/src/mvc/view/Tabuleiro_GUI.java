@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import mvc.controller.GameController;
+
 //import controller
 
 public class Tabuleiro_GUI extends JPanel{

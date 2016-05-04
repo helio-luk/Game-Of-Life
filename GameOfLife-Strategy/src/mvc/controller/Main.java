@@ -32,5 +32,7 @@ public class Main {
 		controller.setStatistics(statistics);
 		
 		controller.start();*/
+		
+		new Game();
 	}
 }

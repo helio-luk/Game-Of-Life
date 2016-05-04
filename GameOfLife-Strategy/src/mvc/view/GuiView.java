@@ -3,6 +3,8 @@ package mvc.view;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import mvc.controller.GameController;
+import mvc.model.GameEngine;
 import mvc.view.Janela_GUI;
 //import controller
 //import GameEngine
@@ -10,12 +12,13 @@ import mvc.view.Janela_GUI;
 public class GuiView implements Runnable{
 	
 	protected GameController controller;
+	protected GameEngine engine;
 	private Janela_GUI frame;
 	private String statisticsMessage;
 	
 	public GuiView(GameController controller, GameEngine engine) {
 		this.controller = controller;
-		engine.register(this);
+		this.engine = engine;
 		SwingUtilities.invokeLater(this);
 	}
 
@@ -24,10 +27,7 @@ public class GuiView implements Runnable{
 		statisticsMessage = controller.getStatistics();
 	}
 
-	@Override
-	public void start() {}
-
-	@Override
+		
 	public void showStatistics() {
 		JOptionPane.showMessageDialog(null, statisticsMessage);
 	}

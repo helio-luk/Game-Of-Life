@@ -34,13 +34,9 @@ public class Statistics {
 		this.killedCells++;
 	}
 	
-	public void display() {
-		System.out.println("=================================");
-		System.out.println("           Statistics            ");
-		System.out.println("=================================");
-		System.out.println("Revived cells: " + revivedCells);
-		System.out.println("Killed cells: " + killedCells);
-		System.out.println("=================================");
+	public String display() {
+		String statistics = "Revived Cells: "+ revivedCells + " Killed Cells: "+ killedCells;
+		return statistics;		
 	}
 
 }

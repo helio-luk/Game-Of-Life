@@ -39,6 +39,11 @@ public class GameController {
 		this.statistics = statistics;
 	}
 	
+	public String getStatistics(){
+		return this.statistics.display();
+	}
+	
+	
 	public void start() {
 		board.update();
 	}
@@ -60,9 +65,29 @@ public class GameController {
 		}
 	}
 	
+	public boolean isCellAlive(int i, int j){		
+		try{
+			return this.engine.isCellAlive(i, j);
+		}catch(InvalidParameterException e){System.out.println(e.getMessage());}
+		return false; //TODO: eu acho que tem um problema com excessão aqui		
+	}
+	
+	public void makeCellDead(int i, int j){
+		
+	}
+	
 	public void nextGeneration() {
 		engine.nextGeneration();
 		board.update();
 	}
+	
+	public int getAlturaTabuleiro(){
+		return this.engine.getHeight();//TODO: padronizar nomes
+	}
+	
+	public int getLarguraTabuleiro(){
+		return this.engine.getWidth();//TODO:padronizar nomes
+	}
+	
 	
 }

@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 import mvc.view.Tabuleiro_GUI;
 import mvc.view.Menu_GUI;
+import mvc.controller.GameController;
 import mvc.view.Estat_GUI;
 
 //import na controller;
@@ -22,7 +23,7 @@ public class Janela_GUI extends JFrame{
 	private Estat_GUI estats;
 	private Container pane = getContentPane();
 
-	public GameWindow(GameController controller) {
+	public Janela_GUI(GameController controller) {
 		super("Game of Life");
 		
 		createWindow();

@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import mvc.controller.GameController;
+
 //import na controller
 //import no pack com as estrategias
 
@@ -47,25 +49,25 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	}
 	
 	private void setProxGerButton(){
-		proxGer = new JButton("   Próxima geração  ");
+		proxGer = new JButton("   Prï¿½xima geraï¿½ï¿½o  ");
 		proxGer.addActionListener(this);		
 		add(proxGer);
 	}
 	
 	private void setAnimarButton(){		
-		animar = new JButton("          Animação         ");
+		animar = new JButton("          Animaï¿½ï¿½o         ");
 		animar.addActionListener(this);
 		add(animar);
 	}
 	
 	private void setMataTodasButton(){
-		mataTodas = new JButton("Matar todas células ");
+		mataTodas = new JButton("Matar todas cï¿½lulas ");
 		mataTodas.addActionListener(this);
 		add(mataTodas);
 	}
 	
 	private void setEstatisticaButton(){
-		estatistica = new JButton("         Estatística         ");
+		estatistica = new JButton("         Estatï¿½stica         ");
 		estatistica.addActionListener(this);
 		add(estatistica);
 	}
@@ -112,7 +114,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 		displayedGenerations++;
 		if ((controller.numberOfAliveCells() == 0) || (displayedGenerations == generations)){
 			if (controller.numberOfAliveCells() == 0){
-				JOptionPane.showMessageDialog(null, "Não há mais células vivas!");
+				JOptionPane.showMessageDialog(null, "Nï¿½o hï¿½ mais cï¿½lulas vivas!");
 			}
 			timer.stop();
 		}
@@ -128,14 +130,14 @@ public class Menu_GUI extends JPanel implements ActionListener{
 
 	public void animate() {
 		try {
-			generations = Integer.parseInt(JOptionPane.showInputDialog("Deseja ver quantas gerações?"));
+			generations = Integer.parseInt(JOptionPane.showInputDialog("Deseja ver quantas geraï¿½ï¿½es?"));
 			displayedGenerations = 0;
 			timer = new Timer(200, this);
 			timer.setRepeats(true);
 			timer.start();
 		}
 		catch (NumberFormatException ex) {
-			JOptionPane.showMessageDialog(null, "O valor fornecido não é um número válido de gerações.");
+			JOptionPane.showMessageDialog(null, "O valor fornecido nï¿½o ï¿½ um nï¿½mero vï¿½lido de geraï¿½ï¿½es.");
 			animate();
 		}
 	}
@@ -147,7 +149,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	public void changeStrategy() {
 		int estrategia = boxEstrategia.getSelectedIndex() + 1;
 		controller.changeStrategy(Strategies.getStrategy(estrategia));
-		// estrategia invalida não tratada, por ser escolhida entre opções pre-definidas
+		// estrategia invalida nï¿½o tratada, por ser escolhida entre opï¿½ï¿½es pre-definidas
 	}
 	
 	public void exit() {

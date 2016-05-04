@@ -3,6 +3,8 @@ package mvc.view;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import mvc.controller.GameController;
+
 //import controller
 
 public class Estat_GUI extends JPanel{
