@@ -20,7 +20,7 @@ public class Game {
 		controller.setEngine(engine);
 		controller.setStatistics(statistics);
 		view = new GuiView(controller, engine);//TODO: conferir a classe game controller
-		view.start();//TODO: arrumar isso aqui
+		//view.start();//TODO: arrumar isso aqui
 		
 	}
 

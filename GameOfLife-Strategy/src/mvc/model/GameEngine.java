@@ -122,6 +122,14 @@ public class GameEngine {
 		
 	}
 	
+	public void killAllCells(){//TODO:acho que tinha que tratar a exception aqui
+		for(int i = 0; i < height; i++) {
+			for(int j = 0; j < width; j++) {
+				makeCellDead(i, j);
+			}
+		}		
+	}
+	
 	/**
 	 * Verifica se uma celula na posicao (i, j) estah viva.
 	 * 

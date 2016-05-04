@@ -1,5 +1,5 @@
 package mvc.view;
-package mvc.view;
+
 
 import java.awt.event.ActionEvent;
 
@@ -49,7 +49,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	}
 	
 	private void setProxGerButton(){
-		proxGer = new JButton("   Pr�xima gera��o  ");
+		proxGer = new JButton("   Proxima Geracao  ");
 		proxGer.addActionListener(this);		
 		add(proxGer);
 	}
@@ -148,8 +148,11 @@ public class Menu_GUI extends JPanel implements ActionListener{
 
 	public void changeStrategy() {
 		int estrategia = boxEstrategia.getSelectedIndex() + 1;
-		controller.changeStrategy(Strategies.getStrategy(estrategia));
-		// estrategia invalida n�o tratada, por ser escolhida entre op��es pre-definidas
+		
+		//controller.changeStrategy(Strategies.getStrategy(estrategia));TODO:arrumar aqui
+		
+		
+		//estrategia invalida n�o tratada, por ser escolhida entre op��es pre-definidas
 	}
 	
 	public void exit() {

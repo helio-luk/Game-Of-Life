@@ -2,9 +2,11 @@ package mvc.controller;
 
 import java.security.InvalidParameterException;
 
+import mvc.model.EstrategiaDeDerivacao;
 import mvc.model.GameEngine;
 import mvc.model.Statistics;
-import mvc.view.GameView;
+import mvc.view.GuiView;
+
 
 /**
  * Classe que atua como um controlador do 
@@ -16,22 +18,26 @@ import mvc.view.GameView;
 public class GameController {
 
 	private GameEngine engine;
-	private GameView board;
+	private GuiView board;
 	private Statistics statistics;
 	
 	public GameEngine getEngine() {
 		return engine;
 	}
 	
+	public void setEstrategia(EstrategiaDeDerivacao e){
+		engine.setEstrategia(e);
+	}
+	
 	public void setEngine(GameEngine engine) {
 		this.engine = engine;
 	}
 	
-	public GameView getBoard() {
+	public GuiView getBoard() {
 		return board;
 	}
 	
-	public void setBoard(GameView board) {
+	public void setBoard(GuiView board) {
 		this.board = board;
 	}
 	
@@ -43,8 +49,11 @@ public class GameController {
 		return this.statistics.display();
 	}
 	
+	public void exit(){
+		System.exit(0);
+	}
 	
-	public void start() {
+	public void start() { //problema qui
 		board.update();
 	}
 	
@@ -55,7 +64,7 @@ public class GameController {
 		System.exit(0);
 	}
 	
-	public void makeCellAlive(int i, int j) {
+	public void makeCellAlive(int i, int j) {//problma aqui
 		try {
 			engine.makeCellAlive(i, j);
 			board.update();
@@ -66,14 +75,13 @@ public class GameController {
 	}
 	
 	public boolean isCellAlive(int i, int j){		
-		try{
-			return this.engine.isCellAlive(i, j);
-		}catch(InvalidParameterException e){System.out.println(e.getMessage());}
-		return false; //TODO: eu acho que tem um problema com excessão aqui		
+			return this.engine.isCellAlive(i, j);				
 	}
 	
 	public void makeCellDead(int i, int j){
-		
+		try{
+			this.engine.makeCellDead(i, j);
+		}catch(InvalidParameterException e){System.out.println(e.getMessage());}//TODO:tem q melhorar essa exception
 	}
 	
 	public void nextGeneration() {
@@ -87,6 +95,17 @@ public class GameController {
 	
 	public int getLarguraTabuleiro(){
 		return this.engine.getWidth();//TODO:padronizar nomes
+	}
+	
+	public int numberOfAliveCells() {		
+		return engine.numberOfAliveCells();
+	}
+	
+	public void killAllCells(){
+		try{
+			this.engine.killAllCells();
+		}catch(InvalidParameterException e){System.out.println(e.getMessage());}//TODO:tem q melhorar essa exception
+		
 	}
 	
 	

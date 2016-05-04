@@ -6,8 +6,6 @@ import javax.swing.SwingUtilities;
 import mvc.controller.GameController;
 import mvc.model.GameEngine;
 import mvc.view.Janela_GUI;
-//import controller
-//import GameEngine
 
 public class GuiView implements Runnable{
 	
@@ -22,7 +20,7 @@ public class GuiView implements Runnable{
 		SwingUtilities.invokeLater(this);
 	}
 
-	public void update() {
+	public void update() {//erro aqui
 		frame.updateTabuleiro();
 		statisticsMessage = controller.getStatistics();
 	}
