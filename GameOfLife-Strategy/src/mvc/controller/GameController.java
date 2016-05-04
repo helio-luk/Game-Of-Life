@@ -64,14 +64,11 @@ public class GameController {
 		System.exit(0);
 	}
 	
-	public void makeCellAlive(int i, int j) {//problma aqui
+	public void makeCellAlive(int i, int j) {
 		try {
 			engine.makeCellAlive(i, j);
 			board.update();
-		}
-		catch(InvalidParameterException e) {
-			System.out.println(e.getMessage());
-		}
+		}catch(InvalidParameterException e) {System.out.println(e.getMessage());	}
 	}
 	
 	public boolean isCellAlive(int i, int j){		
@@ -79,9 +76,9 @@ public class GameController {
 	}
 	
 	public void makeCellDead(int i, int j){
-		try{
+		try {
 			this.engine.makeCellDead(i, j);
-		}catch(InvalidParameterException e){System.out.println(e.getMessage());}//TODO:tem q melhorar essa exception
+		}catch(InvalidParameterException e) {System.out.println(e.getMessage());	}
 	}
 	
 	public void nextGeneration() {
@@ -102,7 +99,7 @@ public class GameController {
 	}
 	
 	public void killAllCells(){
-		try{
+		try{			
 			this.engine.killAllCells();
 		}catch(InvalidParameterException e){System.out.println(e.getMessage());}//TODO:tem q melhorar essa exception
 		

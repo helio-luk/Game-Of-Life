@@ -43,6 +43,14 @@ public class Tabuleiro_GUI extends JPanel{
 		setVisible(true);
 	}
 	
+	public void mudarTodosIcones(){//TODO:isso aqui tem q deixar todos os botões(celulas) mortos. N tá funfando ainda
+		for ( int i = 0; i < altura; i++ ) {
+			for ( int j = 0; j < largura; j++ ) {
+				button.setIcon(deadCell);
+			}
+		}		
+	}
+	
 	private void criarTabuleiro() {
 		tabuleiro = new Cell[altura][largura];
 		
@@ -68,25 +76,28 @@ public class Tabuleiro_GUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			if ( controller.isCellAlive(button.linha, button.coluna) ) {
 				button.setIcon(deadCell);
-				controller.makeCellDead(button.linha, button.coluna);
+				controller.makeCellDead(button.linha, button.coluna);//O ERRO TÁ É AQUI
 			} else {
 				button.setIcon(liveCell);
-				controller.makeCellAlive(button.linha, button.coluna);
+				controller.makeCellAlive(button.linha, button.coluna);// O ERRO TÁ É AQUI
 			}
 		}
 		
 	}
 
 	public void update() {
+		
 		for ( int i = 0; i < altura; i++ ) {
 			for ( int j = 0; j < largura; j++ ) {
-				if ( controller.isCellAlive(i, j) )
+				if ( controller.isCellAlive(i, j) ){
 					tabuleiro[i][j].setIcon(liveCell);
-				else
+				}else{
 					tabuleiro[i][j].setIcon(deadCell);
+				}	
 				tabuleiro[i][j].setVisible(true);	
 			}
-		}
+		};
+		
 	}
 
 }

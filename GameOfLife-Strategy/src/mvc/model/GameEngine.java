@@ -113,7 +113,7 @@ public class GameEngine {
 	
 	public void makeCellDead(int i, int j) throws InvalidParameterException{
 		
-		if(validPosition(i, j)){
+		if(validPosition(i, j)){			
 			cells[i][j].kill();
 			statistics.recordKill();			
 		}else{
@@ -123,9 +123,11 @@ public class GameEngine {
 	}
 	
 	public void killAllCells(){//TODO:acho que tinha que tratar a exception aqui
+		
 		for(int i = 0; i < height; i++) {
 			for(int j = 0; j < width; j++) {
-				makeCellDead(i, j);
+				if(isCellAlive(i,j))
+					makeCellDead(i, j);
 			}
 		}		
 	}
@@ -143,7 +145,7 @@ public class GameEngine {
 		if(validPosition(i, j)) {
 			return cells[i][j].isAlive();
 		}
-		else {
+		else {			
 			throw new InvalidParameterException("Invalid position (" + i + ", " + j + ")" );
 		}
 	}

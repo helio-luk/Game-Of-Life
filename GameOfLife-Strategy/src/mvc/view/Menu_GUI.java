@@ -121,7 +121,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	}
 
 	public void killAllCells() {
-		controller.killAllCells();
+		controller.killAllCells();		
 	}
 
 	public void displayStatistics() {

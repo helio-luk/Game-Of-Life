@@ -19,8 +19,9 @@ public class Game {
 		controller = new GameController();
 		controller.setEngine(engine);
 		controller.setStatistics(statistics);
-		view = new GuiView(controller, engine);//TODO: conferir a classe game controller
-		//view.start();//TODO: arrumar isso aqui
+		view = new GuiView(controller, engine);
+		controller.setBoard(view);
+		//
 		
 	}
 
