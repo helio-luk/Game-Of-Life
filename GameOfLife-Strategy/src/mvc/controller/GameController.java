@@ -2,8 +2,11 @@ package mvc.controller;
 
 import java.security.InvalidParameterException;
 
+import mvc.model.Conway;
 import mvc.model.EstrategiaDeDerivacao;
 import mvc.model.GameEngine;
+import mvc.model.HighLife;
+import mvc.model.LiveFreeOrDie;
 import mvc.model.Statistics;
 import mvc.view.GuiView;
 
@@ -103,6 +106,27 @@ public class GameController {
 			this.engine.killAllCells();
 			board.limpaTela();
 		}catch(InvalidParameterException e){System.out.println(e.getMessage());}//TODO:tem q melhorar essa exception
+		
+	}
+	
+	public void changeStrategy(int estrategia){
+		
+		switch(estrategia){
+		
+		case 1:
+			engine.setEstrategia(new Conway());
+			break;
+		case 2:
+			engine.setEstrategia(new HighLife());
+			break;
+		case 3:
+			engine.setEstrategia(new LiveFreeOrDie());
+			break;
+		default:
+			//lançar exceção			
+		
+		}
+		
 		
 	}
 	

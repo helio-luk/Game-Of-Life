@@ -150,6 +150,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 		int estrategia = boxEstrategia.getSelectedIndex() + 1;
 		
 		//controller.changeStrategy(Strategies.getStrategy(estrategia));
+		controller.changeStrategy(estrategia);
 		
 		
 		//estrategia invalida n�o tratada, por ser escolhida entre op��es pre-definidas
