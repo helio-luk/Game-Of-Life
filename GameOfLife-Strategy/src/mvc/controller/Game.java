@@ -28,14 +28,18 @@ public class Game {
 	}
 	
 	public int getAltura(){
-		int altura; 		
-		altura = Integer.parseInt(JOptionPane.showInputDialog("Altura:"));		
+		int altura = 31;
+		while (altura > 30){
+			altura = Integer.parseInt(JOptionPane.showInputDialog("Altura: (Insira um número menor que 30)"));		
+		}
 		return altura;
 	}
 	
 	public int getLargura(){
-		int largura; 		
-		largura = Integer.parseInt(JOptionPane.showInputDialog("Largura:"));		
+		int largura = 31;
+		while (largura > 30){
+			largura = Integer.parseInt(JOptionPane.showInputDialog("Largura: (Insira um número menor que 30)"));		
+		}
 		return largura;
 	}
 	

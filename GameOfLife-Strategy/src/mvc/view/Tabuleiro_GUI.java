@@ -1,6 +1,5 @@
 package mvc.view;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,8 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import mvc.controller.GameController;
-
-//import controller
 
 public class Tabuleiro_GUI extends JPanel{
 	private ImageIcon liveCell = new ImageIcon("live.png");
@@ -57,8 +54,6 @@ public class Tabuleiro_GUI extends JPanel{
 		for ( int i = 0; i < altura; i++ ) {
 			for ( int j = 0; j < largura; j++ ) {
 				tabuleiro[i][j] = new Cell(i, j);
-				tabuleiro[i][j].setBackground(Color.white);
-				tabuleiro[i][j].setBorderPainted(false);
 				tabuleiro[i][j].addActionListener(new CellListener(tabuleiro[i][j]));
 			}
 		}
@@ -76,10 +71,10 @@ public class Tabuleiro_GUI extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			if ( controller.isCellAlive(button.linha, button.coluna) ) {
 				button.setIcon(deadCell);
-				controller.makeCellDead(button.linha, button.coluna);//O ERRO TÁ É AQUI
+				controller.makeCellDead(button.linha, button.coluna);
 			} else {
 				button.setIcon(liveCell);
-				controller.makeCellAlive(button.linha, button.coluna);// O ERRO TÁ É AQUI
+				controller.makeCellAlive(button.linha, button.coluna);
 			}
 		}
 		

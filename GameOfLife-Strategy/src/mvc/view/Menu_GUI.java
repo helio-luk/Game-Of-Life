@@ -15,7 +15,6 @@ import javax.swing.Timer;
 
 import mvc.controller.GameController;
 
-//import na controller
 //import no pack com as estrategias
 
 public class Menu_GUI extends JPanel implements ActionListener{
@@ -26,9 +25,8 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	
 	private JButton proxGer;
 	private JButton animar;
-	private JButton estatistica;
-	private JButton mataTodas;
-	private JButton sair;
+	private JButton parar;
+	private boolean stopStatus;
 	
 	private JComboBox<String> boxEstrategia;
 	
@@ -42,46 +40,33 @@ public class Menu_GUI extends JPanel implements ActionListener{
 			
 		setProxGerButton();
 		setAnimarButton();
-		setMataTodasButton();
-		setEstatisticaButton();
+		setPararButton();
 		setBoxEstrategia();
-		setSairButton();
+
 	}
 	
 	private void setProxGerButton(){
-		proxGer = new JButton("   Proxima Geracao  ");
+		proxGer = new JButton("Next Generation");
 		proxGer.addActionListener(this);		
 		add(proxGer);
 	}
 	
+	private void setPararButton() {
+		parar = new JButton("Stop animation");
+		parar.addActionListener(this);
+		add(parar);
+	}
+	
 	private void setAnimarButton(){		
-		animar = new JButton("          Animacao         ");
+		animar = new JButton("Animate");
 		animar.addActionListener(this);
 		add(animar);
-	}
-	
-	private void setMataTodasButton(){
-		mataTodas = new JButton("Matar todas celulas ");
-		mataTodas.addActionListener(this);
-		add(mataTodas);
-	}
-	
-	private void setEstatisticaButton(){
-		estatistica = new JButton("         Estatistica         ");
-		estatistica.addActionListener(this);
-		add(estatistica);
 	}
 	
 	private void setBoxEstrategia(){
 		boxEstrategia = new JComboBox<String>(estrategia);
 		boxEstrategia.addActionListener(this);
 		add(boxEstrategia);
-	}
-	
-	private void setSairButton(){
-		sair = new JButton("             Fechar             ");
-		sair.addActionListener(this);
-		add(sair);
 	}
 
 	@Override
@@ -95,14 +80,8 @@ public class Menu_GUI extends JPanel implements ActionListener{
 		else if ( event.getSource() == animar ){
 			animate();
 		}
-		else if ( event.getSource() == estatistica ){
-			displayStatistics();
-		}
-		else if ( event.getSource() == mataTodas ){
-			killAllCells();
-		}
-		else if ( event.getSource() == sair ){
-			exit();
+		else if ( event.getSource() == parar ){
+			stopStatus = true;
 		}
 		else if ( event.getSource() == timer ){
 			animationTimer();
@@ -111,35 +90,20 @@ public class Menu_GUI extends JPanel implements ActionListener{
 
 	public void animationTimer(){
 		nextGeneration();
-		displayedGenerations++;
-		if ((controller.numberOfAliveCells() == 0) || (displayedGenerations == generations)){
-			if (controller.numberOfAliveCells() == 0){
-				JOptionPane.showMessageDialog(null, "N�o h� mais c�lulas vivas!");
-			}
+		if (controller.numberOfAliveCells() == 0){
+			JOptionPane.showMessageDialog(null, "No more cells alive!");
+			timer.stop();
+		}
+		else if(stopStatus){
 			timer.stop();
 		}
 	}
 
-	public void killAllCells() {
-		controller.killAllCells();		
-	}
-
-	public void displayStatistics() {
-		JOptionPane.showMessageDialog(null, controller.getStatistics());
-	}
-
 	public void animate() {
-		try {
-			generations = Integer.parseInt(JOptionPane.showInputDialog("Deseja ver quantas gera��es?"));
-			displayedGenerations = 0;
-			timer = new Timer(200, this);
-			timer.setRepeats(true);
-			timer.start();
-		}
-		catch (NumberFormatException ex) {
-			JOptionPane.showMessageDialog(null, "O valor fornecido n�o � um n�mero v�lido de gera��es.");
-			animate();
-		}
+		stopStatus = false;
+		timer = new Timer(200, this);
+		timer.setRepeats(true);
+		timer.start();
 	}
 
 	public void nextGeneration() {
@@ -154,9 +118,5 @@ public class Menu_GUI extends JPanel implements ActionListener{
 		
 		
 		//estrategia invalida n�o tratada, por ser escolhida entre op��es pre-definidas
-	}
-	
-	public void exit() {
-		controller.exit();
 	}
 }
