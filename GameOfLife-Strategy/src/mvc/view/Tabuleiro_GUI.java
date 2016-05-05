@@ -43,12 +43,12 @@ public class Tabuleiro_GUI extends JPanel{
 		setVisible(true);
 	}
 	
-	public void mudarTodosIcones(){//TODO:isso aqui tem q deixar todos os botões(celulas) mortos. N tá funfando ainda
+	public void limpaTela(){//TODO:isso aqui tem q deixar todos os botões(celulas) mortos. N tá funfando ainda
 		for ( int i = 0; i < altura; i++ ) {
-			for ( int j = 0; j < largura; j++ ) {
-				button.setIcon(deadCell);
+			for ( int j = 0; j < largura; j++ ) {		
+				tabuleiro[i][j].setIcon(deadCell);
 			}
-		}		
+		}
 	}
 	
 	private void criarTabuleiro() {

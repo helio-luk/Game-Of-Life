@@ -101,6 +101,7 @@ public class GameController {
 	public void killAllCells(){
 		try{			
 			this.engine.killAllCells();
+			board.limpaTela();
 		}catch(InvalidParameterException e){System.out.println(e.getMessage());}//TODO:tem q melhorar essa exception
 		
 	}

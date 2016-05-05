@@ -20,7 +20,7 @@ public class GuiView implements Runnable{
 		SwingUtilities.invokeLater(this);
 	}
 
-	public void update() {//erro aqui
+	public void update() {
 		frame.updateTabuleiro();
 		statisticsMessage = controller.getStatistics();
 	}
@@ -34,6 +34,9 @@ public class GuiView implements Runnable{
 	public void run() {
 		frame = new Janela_GUI(controller);
 	}
-
+	
+	public void limpaTela(){
+		frame.getTabuleiro().limpaTela();
+	}
 	
 }

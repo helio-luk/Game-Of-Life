@@ -14,7 +14,7 @@ import mvc.view.Menu_GUI;
 import mvc.controller.GameController;
 import mvc.view.Estat_GUI;
 
-//import na controller;
+
 
 public class Janela_GUI extends JFrame{
 	
