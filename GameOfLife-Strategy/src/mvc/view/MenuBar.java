@@ -20,12 +20,12 @@ public class MenuBar  implements ActionListener {
 		this.controller = controller;
 		
 		menu = new JMenuBar();
-		opcoes = new JMenu ("Opções");
+		opcoes = new JMenu ("Options");
 		
 		menu.add(opcoes);
 		
-		estatistica = new JMenuItem("Estatística");
-		matar = new JMenuItem("Matar todas células");
+		estatistica = new JMenuItem("Statistics");
+		matar = new JMenuItem("Kill all cells");
 		
 		opcoes.add(estatistica);
 		opcoes.add(matar);

@@ -29,16 +29,16 @@ public class Game {
 	
 	public int getAltura(){
 		int altura = 31;
-		while (altura > 30){
-			altura = Integer.parseInt(JOptionPane.showInputDialog("Altura: (Insira um número menor que 30)"));		
+		while (altura > 30 || altura < 1){
+			altura = Integer.parseInt(JOptionPane.showInputDialog("Height: (Enter a number between 1 and 30)"));		
 		}
 		return altura;
 	}
 	
 	public int getLargura(){
 		int largura = 31;
-		while (largura > 30){
-			largura = Integer.parseInt(JOptionPane.showInputDialog("Largura: (Insira um número menor que 30)"));		
+		while (largura > 30 || largura < 1){
+			largura = Integer.parseInt(JOptionPane.showInputDialog("Width: (Enter a number between 1 and 30)"));		
 		}
 		return largura;
 	}
