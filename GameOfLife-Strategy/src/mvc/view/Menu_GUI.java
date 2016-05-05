@@ -55,19 +55,19 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	}
 	
 	private void setAnimarButton(){		
-		animar = new JButton("          Anima��o         ");
+		animar = new JButton("          Animacao         ");
 		animar.addActionListener(this);
 		add(animar);
 	}
 	
 	private void setMataTodasButton(){
-		mataTodas = new JButton("Matar todas c�lulas ");
+		mataTodas = new JButton("Matar todas celulas ");
 		mataTodas.addActionListener(this);
 		add(mataTodas);
 	}
 	
 	private void setEstatisticaButton(){
-		estatistica = new JButton("         Estat�stica         ");
+		estatistica = new JButton("         Estatistica         ");
 		estatistica.addActionListener(this);
 		add(estatistica);
 	}
@@ -149,7 +149,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	public void changeStrategy() {
 		int estrategia = boxEstrategia.getSelectedIndex() + 1;
 		
-		//controller.changeStrategy(Strategies.getStrategy(estrategia));TODO:arrumar aqui
+		//controller.changeStrategy(Strategies.getStrategy(estrategia));
 		
 		
 		//estrategia invalida n�o tratada, por ser escolhida entre op��es pre-definidas
