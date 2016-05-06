@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+
+<beans>
+	
+	<bean id="lista" class="mvc.model.ListaEstrategias" scope="prototype">
+		<property name="lista">
+			<list>
+				<ref bean="conway"/>
+				<ref bean="highLife"/>
+				<ref bean="liveFreeOrDie"/>
+			</list>
+		</property>
+	
+	</bean>
+
+	<bean id="conway" class="mvc.model.Conway" scope="prototype"/>
+	<bean id="highLife" class="mvc.model.HighLife" scope="prototype"/>
+	<bean id="liveFreeOrDie" class="mvc.model.LiveFreeOrDie" scope="prototype"/>
+	
+</beans>

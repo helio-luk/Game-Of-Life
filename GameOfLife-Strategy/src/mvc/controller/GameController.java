@@ -1,11 +1,17 @@
 package mvc.controller;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
 
 import mvc.model.Conway;
 import mvc.model.EstrategiaDeDerivacao;
 import mvc.model.GameEngine;
 import mvc.model.HighLife;
+import mvc.model.ListaEstrategias;
 import mvc.model.LiveFreeOrDie;
 import mvc.model.Statistics;
 import mvc.view.GuiView;
@@ -111,22 +117,12 @@ public class GameController {
 	
 	public void changeStrategy(int estrategia){
 		
-		switch(estrategia){
+		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/mvc/model/spring/spring.xml"));		
+		ListaEstrategias lista =  (ListaEstrategias) factory.getBean("lista");		
 		
-		case 1:
-			engine.setEstrategia(new Conway());
-			break;
-		case 2:
-			engine.setEstrategia(new HighLife());
-			break;
-		case 3:
-			engine.setEstrategia(new LiveFreeOrDie());
-			break;
-		default:
-			//lançar exceção			
-		
-		}
-		
+		ArrayList <EstrategiaDeDerivacao> listaEstrategia = new ArrayList <EstrategiaDeDerivacao>(0);		
+		listaEstrategia = lista.getLista();		 		
+		engine.setEstrategia(listaEstrategia.get(estrategia-1));
 		
 	}
 	
