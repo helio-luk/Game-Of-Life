@@ -28,7 +28,7 @@ public class Janela_GUI extends JFrame{
 	private MenuBar menubar;
 	
 	public Janela_GUI(GameController controller) {
-super("Game of Life");
+		super("Game of Life");
 		
 		createWindow();
 		

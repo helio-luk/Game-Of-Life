@@ -15,7 +15,7 @@ import javax.swing.Timer;
 
 import mvc.controller.GameController;
 
-//import no pack com as estrategias
+
 
 public class Menu_GUI extends JPanel implements ActionListener{
 
@@ -111,9 +111,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	}
 
 	public void changeStrategy() {
-		int estrategia = boxEstrategia.getSelectedIndex() + 1;
-		
-		//controller.changeStrategy(Strategies.getStrategy(estrategia));
+		int estrategia = boxEstrategia.getSelectedIndex() + 1;		
 		controller.changeStrategy(estrategia);
 		
 		

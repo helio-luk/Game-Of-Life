@@ -4,6 +4,10 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+
 import mvc.model.Conway;
 
 /**
@@ -19,7 +23,7 @@ public class GameEngine {
 	private int width;
 	private Cell[][] cells;
 	private Statistics statistics;
-	private EstrategiaDeDerivacao estrategia;
+	private EstrategiaDeDerivacao strategy;
 	
 
 	/**
@@ -43,15 +47,23 @@ public class GameEngine {
 		}
 		
 		this.statistics = statistics;
-		setEstrategia(new Conway());//TODO:fazer isso aqui melhor
+		
+		//instaniando a estrategia conway como default usando spring
+		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/mvc/model/spring/spring.xml"));		
+		ListaEstrategias list =  (ListaEstrategias) factory.getBean("lista");			
+		ArrayList <EstrategiaDeDerivacao> strategyList = new ArrayList <EstrategiaDeDerivacao>(0);		
+		strategyList = list.getLista();	
+		
+		setEstrategia(strategyList.get(0));		
+
 	}
 	
 	public void setEstrategia(EstrategiaDeDerivacao e) {
-		estrategia = e;
+		strategy = e;
 	}
 
 	public EstrategiaDeDerivacao getEstrategia() {
-		return estrategia;
+		return strategy;
 	}
 	
 	/**
@@ -65,10 +77,10 @@ public class GameEngine {
 		List<Cell> mustKill = new ArrayList<Cell>();
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
-				if (estrategia.shouldRevive(i, j, this)) {
+				if (strategy.shouldRevive(i, j, this)) {
 					mustRevive.add(cells[i][j]);
 				} 
-				else if ((!estrategia.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
+				else if ((!strategy.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
 					mustKill.add(cells[i][j]);
 				}
 			}
