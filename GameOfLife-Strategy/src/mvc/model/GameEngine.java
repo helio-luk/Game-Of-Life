@@ -4,8 +4,6 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
-import mvc.model.Conway;
-
 /**
  * Representa um ambiente (environment) do jogo GameOfLife.
  * 
@@ -43,7 +41,6 @@ public class GameEngine {
 		}
 		
 		this.statistics = statistics;
-		setEstrategia(new Conway());//TODO:fazer isso aqui melhor
 	}
 	
 	public void setEstrategia(EstrategiaDeDerivacao e) {

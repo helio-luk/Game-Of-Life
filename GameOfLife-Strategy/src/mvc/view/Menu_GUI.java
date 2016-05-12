@@ -4,24 +4,34 @@ package mvc.view;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+
 import mvc.controller.GameController;
+import mvc.model.EstrategiaDeDerivacao;
+import mvc.model.ListaEstrategias;
 
 //import no pack com as estrategias
 
+@SuppressWarnings("serial")
 public class Menu_GUI extends JPanel implements ActionListener{
 
 	private GameController controller;
 	
-	private String[] estrategia = { "Conway", "High Life", "Life Free or Die" };
+	BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/mvc/model/spring/spring.xml"));		
+	ListaEstrategias lista =  (ListaEstrategias) factory.getBean("lista");
+	
+	private String[] estrategia;
 	
 	private JButton proxGer;
 	private JButton animar;
@@ -31,18 +41,28 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	private JComboBox<String> boxEstrategia;
 	
 	private Timer timer; //evitar o bloqueio do Event Dispatch Thread durante animacao
-	private int displayedGenerations, generations;
 	
 	public Menu_GUI(GameController controller) {
 		super();
 		this.controller = controller;
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-			
+		
+		setStringEstrategia();
 		setProxGerButton();
 		setAnimarButton();
 		setPararButton();
 		setBoxEstrategia();
 
+	}
+	
+	public void setStringEstrategia(){
+		ArrayList<EstrategiaDeDerivacao> lista = this.lista.getLista();
+		int i = 0;
+		estrategia = new String[lista.size()];
+		for(EstrategiaDeDerivacao estrategiaAtual:lista){
+			estrategia[i] = estrategiaAtual.getName();
+			i++;
+		}
 	}
 	
 	private void setProxGerButton(){

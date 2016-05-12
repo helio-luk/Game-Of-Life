@@ -2,9 +2,14 @@ package mvc.controller;
 
 import javax.swing.JOptionPane;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+
 import mvc.model.GameEngine;
 import mvc.model.Statistics;
 import mvc.view.GuiView;
+import mvc.model.EstrategiaDeDerivacao;
 
 public class Game {
 	
@@ -15,9 +20,12 @@ public class Game {
 	
 	
 	public Game(){
+		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/mvc/model/spring/spring.xml"));
+		
 		
 		statistics = new Statistics();		
 		engine = new GameEngine(getAltura(),getLargura(), statistics);
+		engine.setEstrategia((EstrategiaDeDerivacao) factory.getBean("conway"));
 		controller = new GameController();
 		controller.setEngine(engine);
 		controller.setStatistics(statistics);

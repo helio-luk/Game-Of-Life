@@ -1,9 +1,5 @@
 package mvc.controller;
 
-import mvc.model.Conway;
-import mvc.model.GameEngine;
-import mvc.model.Statistics;
-
 
 /**
  * Classe que define o metodo principal do programa; ou 
