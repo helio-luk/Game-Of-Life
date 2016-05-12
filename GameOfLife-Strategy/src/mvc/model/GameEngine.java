@@ -75,8 +75,10 @@ public class GameEngine {
 	public void nextGeneration() {
 		List<Cell> mustRevive = new ArrayList<Cell>();
 		List<Cell> mustKill = new ArrayList<Cell>();
+		
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
+				
 				if (strategy.shouldRevive(i, j, this)) {
 					mustRevive.add(cells[i][j]);
 				} 
@@ -180,7 +182,18 @@ public class GameEngine {
 		}
 		return aliveCells;
 	}
-
+	
+	public int normalizar(int x){
+		if(x >= height){
+			return x - height;
+		}
+		else if (x < 0){
+			return x + height;
+		}
+		
+		return x;
+	}
+	
 	/*
 	 * Computa o numero de celulas vizinhas vivas, dada uma posicao no ambiente
 	 * de referencia identificada pelos argumentos (i,j).
@@ -189,7 +202,12 @@ public class GameEngine {
 		int alive = 0;
 		for (int a = i - 1; a <= i + 1; a++) {
 			for (int b = j - 1; b <= j + 1; b++) {
-				if (validPosition(a, b)  && (!(a==i && b == j)) && cells[a][b].isAlive()) {
+				
+				
+				int aux_a = normalizar(a);
+				int aux_b = normalizar(b);
+				
+				if (validPosition(aux_a, aux_b)  && (!(aux_a==i && aux_b == j)) && cells[aux_a][aux_b].isAlive()) {
 					alive++;
 				}
 			}
