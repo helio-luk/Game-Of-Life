@@ -8,8 +8,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 
-import mvc.model.Conway;
-
 /**
  * Representa um ambiente (environment) do jogo GameOfLife.
  * 
@@ -18,6 +16,7 @@ import mvc.model.Conway;
  * derivacao que pode ser alterada durante a execucao do jogo. 
  * @author rbonifacio
  */
+@SuppressWarnings("deprecation")
 public class GameEngine {
 	private int height;
 	private int width;

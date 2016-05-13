@@ -10,13 +10,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import mvc.controller.GameController;
 
 
 
+@SuppressWarnings("serial")
 public class Menu_GUI extends JPanel implements ActionListener{
 
 	private GameController controller;
@@ -31,7 +31,6 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	private JComboBox<String> boxEstrategia;
 	
 	private Timer timer; //evitar o bloqueio do Event Dispatch Thread durante animacao
-	private int displayedGenerations, generations;
 	
 	public Menu_GUI(GameController controller) {
 		super();

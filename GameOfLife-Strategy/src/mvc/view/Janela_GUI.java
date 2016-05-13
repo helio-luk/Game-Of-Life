@@ -19,6 +19,7 @@ import mvc.view.Estat_GUI;
 
 
 
+@SuppressWarnings("serial")
 public class Janela_GUI extends JFrame{
 	
 	private Tabuleiro_GUI tabuleiro;

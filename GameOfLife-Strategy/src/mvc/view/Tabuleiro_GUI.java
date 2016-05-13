@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import mvc.controller.GameController;
 
+@SuppressWarnings("serial")
 public class Tabuleiro_GUI extends JPanel{
 	private ImageIcon liveCell = new ImageIcon("live.png");
 	private ImageIcon deadCell = new ImageIcon("dead.png");
