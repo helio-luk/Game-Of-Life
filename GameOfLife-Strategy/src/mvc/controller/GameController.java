@@ -7,12 +7,9 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 
-import mvc.model.Conway;
 import mvc.model.EstrategiaDeDerivacao;
 import mvc.model.GameEngine;
-import mvc.model.HighLife;
 import mvc.model.ListaEstrategias;
-import mvc.model.LiveFreeOrDie;
 import mvc.model.Statistics;
 import mvc.view.GuiView;
 
@@ -24,6 +21,7 @@ import mvc.view.GuiView;
  * 
  * @author rbonifacio
  */
+@SuppressWarnings("deprecation")
 public class GameController {
 
 	private GameEngine engine;

@@ -4,12 +4,15 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+=======
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 
 import mvc.model.Conway;
 
+>>>>>>> master
 /**
  * Representa um ambiente (environment) do jogo GameOfLife.
  * 
@@ -47,6 +50,8 @@ public class GameEngine {
 		}
 		
 		this.statistics = statistics;
+<<<<<<< HEAD
+=======
 		
 		//instaniando a estrategia conway como default usando spring
 		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/mvc/model/spring/spring.xml"));		
@@ -56,6 +61,7 @@ public class GameEngine {
 		
 		setEstrategia(strategyList.get(0));		
 
+>>>>>>> master
 	}
 	
 	public void setEstrategia(EstrategiaDeDerivacao e) {

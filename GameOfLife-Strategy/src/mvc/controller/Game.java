@@ -2,9 +2,14 @@ package mvc.controller;
 
 import javax.swing.JOptionPane;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+
 import mvc.model.GameEngine;
 import mvc.model.Statistics;
 import mvc.view.GuiView;
+import mvc.model.EstrategiaDeDerivacao;
 
 /**
  * Classe responsável por começar o jogo instanciando as classes de GUIview, controller e engine
@@ -21,9 +26,16 @@ public class Game {
 	
 	
 	public Game(){
+		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/mvc/model/spring/spring.xml"));
+		
 		
 		statistics = new Statistics();		
+<<<<<<< HEAD
+		engine = new GameEngine(getAltura(),getLargura(), statistics);
+		engine.setEstrategia((EstrategiaDeDerivacao) factory.getBean("conway"));
+=======
 		engine = new GameEngine(getHeight(),getWidth(), statistics);
+>>>>>>> master
 		controller = new GameController();
 		controller.setEngine(engine);
 		controller.setStatistics(statistics);

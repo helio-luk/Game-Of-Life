@@ -15,8 +15,8 @@
 	
 	</bean>
 
-	<bean id="conway" class="mvc.model.Conway" scope="prototype"/>
-	<bean id="highLife" class="mvc.model.HighLife" scope="prototype"/>
-	<bean id="liveFreeOrDie" class="mvc.model.LiveFreeOrDie" scope="prototype"/>
+	<bean id="conway" class="regras.Conway" scope="prototype"/>
+	<bean id="highLife" class="regras.HighLife" scope="prototype"/>
+	<bean id="liveFreeOrDie" class="regras.LiveFreeOrDie" scope="prototype"/>
 	
 </beans>

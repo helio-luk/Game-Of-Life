@@ -17,8 +17,7 @@ import mvc.view.Menu_GUI;
 import mvc.controller.GameController;
 import mvc.view.Estat_GUI;
 
-
-
+@SuppressWarnings("serial")
 public class Janela_GUI extends JFrame{
 	
 	private Tabuleiro_GUI tabuleiro;

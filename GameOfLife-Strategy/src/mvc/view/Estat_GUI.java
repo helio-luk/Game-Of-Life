@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import mvc.controller.GameController;
 
+@SuppressWarnings("serial")
 public class Estat_GUI extends JPanel{
 	private GameController controller;
 	private JLabel text;
