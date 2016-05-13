@@ -4,6 +4,15 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+
+import mvc.model.Conway;
+
+>>>>>>> master
 /**
  * Representa um ambiente (environment) do jogo GameOfLife.
  * 
@@ -17,7 +26,7 @@ public class GameEngine {
 	private int width;
 	private Cell[][] cells;
 	private Statistics statistics;
-	private EstrategiaDeDerivacao estrategia;
+	private EstrategiaDeDerivacao strategy;
 	
 
 	/**
@@ -41,14 +50,26 @@ public class GameEngine {
 		}
 		
 		this.statistics = statistics;
+<<<<<<< HEAD
+=======
+		
+		//instaniando a estrategia conway como default usando spring
+		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/mvc/model/spring/spring.xml"));		
+		ListaEstrategias list =  (ListaEstrategias) factory.getBean("lista");			
+		ArrayList <EstrategiaDeDerivacao> strategyList = new ArrayList <EstrategiaDeDerivacao>(0);		
+		strategyList = list.getLista();	
+		
+		setEstrategia(strategyList.get(0));		
+
+>>>>>>> master
 	}
 	
 	public void setEstrategia(EstrategiaDeDerivacao e) {
-		estrategia = e;
+		strategy = e;
 	}
 
 	public EstrategiaDeDerivacao getEstrategia() {
-		return estrategia;
+		return strategy;
 	}
 	
 	/**
@@ -60,12 +81,14 @@ public class GameEngine {
 	public void nextGeneration() {
 		List<Cell> mustRevive = new ArrayList<Cell>();
 		List<Cell> mustKill = new ArrayList<Cell>();
+		
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
-				if (estrategia.shouldRevive(i, j, this)) {
+				
+				if (strategy.shouldRevive(i, j, this)) {
 					mustRevive.add(cells[i][j]);
 				} 
-				else if ((!estrategia.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
+				else if ((!strategy.shouldKeepAlive(i, j, this)) && cells[i][j].isAlive()) {
 					mustKill.add(cells[i][j]);
 				}
 			}
@@ -165,7 +188,18 @@ public class GameEngine {
 		}
 		return aliveCells;
 	}
-
+	
+	public int normalizar(int x){
+		if(x >= height){
+			return x - height;
+		}
+		else if (x < 0){
+			return x + height;
+		}
+		
+		return x;
+	}
+	
 	/*
 	 * Computa o numero de celulas vizinhas vivas, dada uma posicao no ambiente
 	 * de referencia identificada pelos argumentos (i,j).
@@ -174,7 +208,12 @@ public class GameEngine {
 		int alive = 0;
 		for (int a = i - 1; a <= i + 1; a++) {
 			for (int b = j - 1; b <= j + 1; b++) {
-				if (validPosition(a, b)  && (!(a==i && b == j)) && cells[a][b].isAlive()) {
+				
+				
+				int aux_a = normalizar(a);
+				int aux_b = normalizar(b);
+				
+				if (validPosition(aux_a, aux_b)  && (!(aux_a==i && aux_b == j)) && cells[aux_a][aux_b].isAlive()) {
 					alive++;
 				}
 			}

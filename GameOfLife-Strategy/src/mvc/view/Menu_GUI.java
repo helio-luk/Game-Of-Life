@@ -21,7 +21,7 @@ import mvc.controller.GameController;
 import mvc.model.EstrategiaDeDerivacao;
 import mvc.model.ListaEstrategias;
 
-//import no pack com as estrategias
+
 
 @SuppressWarnings("serial")
 public class Menu_GUI extends JPanel implements ActionListener{
@@ -131,9 +131,7 @@ public class Menu_GUI extends JPanel implements ActionListener{
 	}
 
 	public void changeStrategy() {
-		int estrategia = boxEstrategia.getSelectedIndex() + 1;
-		
-		//controller.changeStrategy(Strategies.getStrategy(estrategia));
+		int estrategia = boxEstrategia.getSelectedIndex() + 1;		
 		controller.changeStrategy(estrategia);
 		
 		

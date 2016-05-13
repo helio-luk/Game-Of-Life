@@ -1,6 +1,9 @@
 package mvc.controller;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 /**
  * Classe que define o metodo principal do programa; ou 
  * seja, o metodo que vai ser executado pela JVM para inicializar 
